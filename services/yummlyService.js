@@ -1,21 +1,24 @@
+
 const axios = require("axios");
 require('dotenv').config();
-
+const key = process.env.XRapidAPIKey;
+const link = process.env.API_URI
+const host = process.env.XRapidAPIHost
 
 
 function autoSearchServ(search){
   const options = {
     method: 'GET',
-    url: `${process.env.API_URI}/auto-complete`,//'https://yummly2.p.rapidapi.com/feeds/auto-complete',
+    url: `${link}/auto-complete`,//'https://yummly2.p.rapidapi.com/feeds/auto-complete',
     params: {q: search},
     headers: {
-      'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': host
     }
   };      
       axios.request(options).then(function (response) {
           console.log(response.data);
-          return response.data
+          return response
       }).catch(function (error) {
           console.error(error);
       });
@@ -23,7 +26,7 @@ function autoSearchServ(search){
 function searchServ(search){
   const options = {
     method: 'GET',
-    url: 'https://yummly2.p.rapidapi.com/feeds/search',
+    url: `${link}/feeds/search`,
     params: {
       start: '0',
       maxResult: '18',
@@ -33,14 +36,14 @@ function searchServ(search){
       FAT_KCALMax: '1000'
     },
     headers: {
-      'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': host
     }
   };
       
       axios.request(options).then(function (response) {
           console.log(response.data);
-          return response.data
+          return response
       }).catch(function (error) {
           console.error(error);
       });
@@ -49,16 +52,16 @@ function searchServ(search){
 function listServ(){
   const options = {
     method: 'GET',
-    url: 'https://yummly2.p.rapidapi.com/feeds/list',
+    url: `${process.env.API_URI}/feeds/list`,
     params: {limit: '24', start: '0'},
     headers: {
-      'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': host
     }
   };
       axios.request(options).then(function (response) {
           console.log(response.data);
-          return response.data
+          return response
       }).catch(function (error) {
           console.error(error);
       });
@@ -67,7 +70,7 @@ function listServ(){
 function listSimilaritiesServ(){
   const options = {
     method: 'GET',
-    url: 'https://yummly2.p.rapidapi.com/feeds/list-similarities',
+    url: `${link}/feeds/list-similarities`,
     params: {
       limit: '18',
       start: '0',
@@ -76,13 +79,13 @@ function listSimilaritiesServ(){
       authorId: 'Yummly'
     },
     headers: {
-      'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': host
     }
   };
       axios.request(options).then(function (response) {
           console.log(response.data);
-          return response.data
+          return response
       }).catch(function (error) {
           console.error(error);
       });
@@ -91,15 +94,15 @@ function listSimilaritiesServ(){
 function tagListServ(){
     const options = {
       method: 'GET',
-      url: 'https://yummly2.p.rapidapi.com/tags/list',
+      url: `${link}/tags/list`,
       headers: {
-        'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-        'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+        'X-RapidAPI-Key': key,
+        'X-RapidAPI-Host': host
       }
     };
       axios.request(options).then(function (response) {
           console.log(response.data);
-          return response.data
+          return response
       }).catch(function (error) {
           console.error(error);
       });
@@ -108,15 +111,15 @@ function tagListServ(){
 function categoryListServ(){
   const options = {
     method: 'GET',
-    url: 'https://yummly2.p.rapidapi.com/categories/list',
+    url: `${link}/categories/list`,
     headers: {
-      'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': host
     }
   };
     axios.request(options).then(function (response) {
         console.log(response.data);
-        return response.data
+        return response
     }).catch(function (error) {
         console.error(error);
     });
@@ -125,16 +128,16 @@ function categoryListServ(){
 function reviewListServ(){
   const options = {
     method: 'GET',
-    url: 'https://yummly2.p.rapidapi.com/reviews/list',
+    url: `${link}/reviews/list`,
     params: {offset: '0', globalId: 'a8d6747a-bfaa-46a7-92fb-892e3f76b264', limit: '20'},
     headers: {
-      'X-RapidAPI-Key': 'b4967de6c8msh7ea26f0c311f75cp1f2f75jsnbc04bf637c50',
-      'X-RapidAPI-Host': 'yummly2.p.rapidapi.com'
+      'X-RapidAPI-Key': key,
+      'X-RapidAPI-Host': host
     }
   };
     axios.request(options).then(function (response) {
         console.log(response.data);
-        return response.data
+        return response
     }).catch(function (error) {
         console.error(error);
     });

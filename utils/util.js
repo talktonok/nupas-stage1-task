@@ -32,6 +32,7 @@
       return res.status(this.statusCode).json({
         status: this.type,
         message: this.message,
+        data: this.data,
       });
     }
     
